@@ -1,0 +1,14 @@
+service: boilerplate-aws-lambda-scheduled
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  region: us-east-1
+  profile: <<YOUR_AWS_PROFILE>>
+  runtime: nodejs18.x
+
+functions:
+  cronHandler:
+    handler: src/functions/mainScheduler.run
+    events:
+      - schedule: cron(0/2 * ? * MON-FRI *)
